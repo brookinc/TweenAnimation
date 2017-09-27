@@ -50,10 +50,7 @@ class ViewController: UIViewController {
         animationY.isAdditive = true  // calculate our values relative to the object's (local) coordinates
         switch animationIndex % 19 {
         case 0:
-            //animationY.tweenFunction = TweenAnimation.linearEase
-            animationY.tweenFunction = {
-                return $0 * ($0 + 0.02) * (50.0/51.0)
-            }
+            animationY.tweenFunction = TweenAnimation.linearEase
             label.text = "linearEase"
         case 1:
             animationY.tweenFunction = TweenAnimation.quadEaseIn
