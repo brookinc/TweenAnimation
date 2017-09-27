@@ -1,0 +1,53 @@
+included:
+  - Source
+  - Tests
+excluded:
+
+# for rule details, see: https://github.com/realm/SwiftLint/commits/master/Rules.md
+disabled_rules:
+  #- identifier_name
+
+opt_in_rules:
+  - attributes
+  - closure_end_indentation
+  #- closure_spacing
+  - conditional_returns_on_newline
+  - empty_count
+  - explicit_init
+  - fatal_error_message
+  #- file_header
+  - first_where
+  #- implicit_return
+  #- implicitly_unwrapped_optional
+  - joined_default_parameter
+  - nimble_operator
+  - number_separator
+  - operator_usage_whitespace
+  - overridden_super_call
+  #- private_outlet
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  #- single_test_class
+  - sorted_imports
+  #- strict_fileprivate
+  - switch_case_on_newline
+  #- trailing_closure
+  - unneeded_parentheses_in_closure_argument
+  #- vertical_parameter_alignment_on_call
+
+# rule-specfic settings
+cyclomatic_complexity:
+  warning: 10
+  error: 9999
+  ignores_case_statements: true
+function_body_length:
+  warning: 500
+  error: 9999
+function_parameter_count:
+  warning: 5
+  error: 9999
+line_length: 200
+number_separator:
+  minimum_length: 5
+trailing_whitespace:
+  ignores_empty_lines: true
