@@ -6,8 +6,7 @@ To see it in action, simply run the included iOS app -- it should work fine in t
 
 To use in your own code, simply copy `TweenAnimation.swift` into your project. Once that's done, you can use `TweenAnimation` much like you would `CABasicAnimation` ([docs](https://developer.apple.com/documentation/quartzcore/cabasicanimation)):
 ```swift
-let animation = TweenAnimation()
-animation.keyPath = "translation.y"
+let animation = TweenAnimation(keyPath: "translation.y")
 animation.fromValue = 0.0
 animation.toValue = 10.0
 animation.duration = 1.0

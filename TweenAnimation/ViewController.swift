@@ -34,16 +34,14 @@ class ViewController: UIViewController {
         
         // (for possible keyPath values, see: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreAnimation_guide/Key-ValueCodingExtensions/Key-ValueCodingExtensions.html
         // and https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html)
-        let animationX = CABasicAnimation()
-        animationX.keyPath = "position.x"
+        let animationX = CABasicAnimation(keyPath: "position.x")
         animationX.fromValue = 0.0
         animationX.toValue = width
         animationX.duration = 1.0
         animationX.isAdditive = true
         //animationX.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        let animationY = TweenAnimation()
-        animationY.keyPath = "position.y"
+        let animationY = TweenAnimation(keyPath: "position.y")
         animationY.fromValue = height
         animationY.byValue = -height
         animationY.duration = 1.0
@@ -122,8 +120,7 @@ class ViewController: UIViewController {
         point.layer.add(group, forKey: "tweenPointAnimation")
         
         // add a sin "pulse" animation on the button as well
-        let buttonAnimation = TweenAnimation()
-        buttonAnimation.keyPath = "transform.scale"
+        let buttonAnimation = TweenAnimation(keyPath: "transform.scale")
         buttonAnimation.fromValue = 1.0
         buttonAnimation.byValue = 0.1
         buttonAnimation.duration = 1.0
