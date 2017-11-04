@@ -106,9 +106,8 @@ class ViewController: UIViewController {
             label.text = "sinEaseInOut"
         default:
             print("Missing tween function!")
-            label.text = "Missing tween function!"
+            label.text = "Missing tween function! (\(animationIndex))"
         }
-        animationIndex += 1
         
         let group = CAAnimationGroup()
         group.animations = [animationX, animationY]
@@ -119,15 +118,64 @@ class ViewController: UIViewController {
         
         point.layer.add(group, forKey: "tweenPointAnimation")
         
-        // add a sin "pulse" animation on the button as well
-        let buttonAnimation = TweenAnimation(keyPath: "transform.scale")
-        buttonAnimation.fromValue = 1.0
-        buttonAnimation.byValue = 0.1
-        buttonAnimation.duration = 1.0
-        buttonAnimation.tweenFunction = TweenAnimation.sinEase()
-        buttonAnimation.repeatCount = .infinity
+        // demonstrate some different cycling animations on the "next" button as well
+        let buttonAnimKey = "tweenButtonAnimation"
+        switch animationIndex % 11 {
+        case 0:
+            let buttonAnimation = TweenAnimation(keyPath: "transform.scale")
+            buttonAnimation.fromValue = 0.9
+            buttonAnimation.toValue = 1.1
+            buttonAnimation.duration = 1.0
+            buttonAnimation.tweenFunction = TweenAnimation.sinEase()
+            buttonAnimation.repeatCount = .infinity
+            nextButton.layer.add(buttonAnimation, forKey: buttonAnimKey)
+        case 1:
+            nextButton.animatePulse(forKey: buttonAnimKey)
+        case 2:
+            nextButton.animatePulseUpward(forKey: buttonAnimKey)
+        case 3:
+            nextButton.animateSquashAndStretch(forKey: buttonAnimKey)
+        case 4:
+            nextButton.animateHop(forKey: buttonAnimKey, height: -20.0)
+        case 5:
+            nextButton.animateSquashHop(forKey: buttonAnimKey, height: -20.0)
+        case 6:
+            nextButton.animateBob(forKey: buttonAnimKey, bob: 2.0)
+        case 7:
+            nextButton.animateHonk(forKey: buttonAnimKey)
+        // some alternate tweens possible with stock CoreAnimation code...
+        case 8:
+            let basicanim = CABasicAnimation(keyPath: "transform.scale")
+            basicanim.fromValue = 0.9
+            basicanim.toValue = 1.1
+            basicanim.duration = 1.0
+            basicanim.repeatCount = .infinity
+            basicanim.autoreverses = true
+            basicanim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            nextButton.layer.add(basicanim, forKey: buttonAnimKey)
+        case 9:
+            let basicanim = CABasicAnimation(keyPath: "transform.scale")
+            basicanim.fromValue = 0.9
+            basicanim.toValue = 1.1
+            basicanim.duration = 1.0
+            basicanim.repeatCount = .infinity
+            basicanim.autoreverses = true
+            basicanim.timingFunction = CAMediaTimingFunction(controlPoints: 0.375, 0.0, 0.625, 1.0)  // sin approximation
+            nextButton.layer.add(basicanim, forKey: buttonAnimKey)
+        case 10:
+            let springanim = CASpringAnimation(keyPath: "transform.scale")
+            springanim.fromValue = 0.9
+            springanim.toValue = 1.1
+            springanim.duration = 1.0
+            springanim.repeatCount = .infinity
+            springanim.initialVelocity = 0.5
+            springanim.damping = 1.0
+            nextButton.layer.add(springanim, forKey: buttonAnimKey)
+        default:
+            print("Missing button tween function! (\(animationIndex))")
+        }
         
-        nextButton.layer.add(buttonAnimation, forKey: "tweenButtonAnimation")
+        animationIndex += 1
     }
     
     override func didReceiveMemoryWarning() {

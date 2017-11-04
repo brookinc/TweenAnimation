@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC94AB4A1FAD36BE006D5880 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC94AB491FAD36BE006D5880 /* Utilities.swift */; };
 		BCF435A11F7AFD9A00BADD6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF435A01F7AFD9A00BADD6E /* AppDelegate.swift */; };
 		BCF435A31F7AFD9A00BADD6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCF435A21F7AFD9A00BADD6E /* ViewController.swift */; };
 		BCF435A61F7AFD9A00BADD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCF435A41F7AFD9A00BADD6E /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC94AB491FAD36BE006D5880 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BCF4359D1F7AFD9A00BADD6E /* TweenAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweenAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF435A01F7AFD9A00BADD6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCF435A21F7AFD9A00BADD6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,11 +59,12 @@
 			isa = PBXGroup;
 			children = (
 				BCF435A01F7AFD9A00BADD6E /* AppDelegate.swift */,
-				BCF435A21F7AFD9A00BADD6E /* ViewController.swift */,
 				BCF435B21F7AFF7100BADD6E /* TweenAnimation.swift */,
+				BC94AB491FAD36BE006D5880 /* Utilities.swift */,
+				BCF435A21F7AFD9A00BADD6E /* ViewController.swift */,
+				BCF435A91F7AFD9A00BADD6E /* LaunchScreen.storyboard */,
 				BCF435A41F7AFD9A00BADD6E /* Main.storyboard */,
 				BCF435A71F7AFD9A00BADD6E /* Assets.xcassets */,
-				BCF435A91F7AFD9A00BADD6E /* LaunchScreen.storyboard */,
 				BCF435AC1F7AFD9A00BADD6E /* Info.plist */,
 			);
 			path = TweenAnimation;
@@ -158,6 +161,7 @@
 			files = (
 				BCF435A31F7AFD9A00BADD6E /* ViewController.swift in Sources */,
 				BCF435B31F7AFF7100BADD6E /* TweenAnimation.swift in Sources */,
+				BC94AB4A1FAD36BE006D5880 /* Utilities.swift in Sources */,
 				BCF435A11F7AFD9A00BADD6E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
