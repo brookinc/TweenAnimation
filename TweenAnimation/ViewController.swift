@@ -39,71 +39,109 @@ class ViewController: UIViewController {
         animationX.toValue = width
         animationX.duration = 1.0
         animationX.isAdditive = true
-        //animationX.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let animationY = TweenAnimation(keyPath: "position.y")
         animationY.fromValue = height
         animationY.byValue = -height
         animationY.duration = 1.0
         animationY.isAdditive = true  // calculate our values relative to the object's (local) coordinates
-        switch animationIndex % 19 {
+        switch animationIndex % 32 {
         case 0:
             animationY.tweenFunction = TweenAnimation.linearEase
             label.text = "linearEase"
         case 1:
-            animationY.tweenFunction = TweenAnimation.quadEaseIn
-            label.text = "quadEaseIn"
-        case 2:
-            animationY.tweenFunction = TweenAnimation.quadEaseOut
-            label.text = "quadEaseOut"
-        case 3:
-            animationY.tweenFunction = TweenAnimation.quadEaseInOut
-            label.text = "quadEaseInOut"
-        case 4:
-            animationY.tweenFunction = TweenAnimation.cubicEaseIn
-            label.text = "cubicEaseIn"
-        case 5:
-            animationY.tweenFunction = TweenAnimation.cubicEaseOut
-            label.text = "cubicEaseOut"
-        case 6:
-            animationY.tweenFunction = TweenAnimation.cubicEaseInOut
-            label.text = "cubicEaseInOut"
-        case 7:
-            animationY.tweenFunction = TweenAnimation.quartEaseIn
-            label.text = "quartEaseIn"
-        case 8:
-            animationY.tweenFunction = TweenAnimation.quartEaseOut
-            label.text = "quartEaseOut"
-        case 9:
-            animationY.tweenFunction = TweenAnimation.quartEaseInOut
-            label.text = "quartEaseInOut"
-        case 10:
-            animationY.tweenFunction = TweenAnimation.expoEaseIn
-            label.text = "expoEaseIn"
-        case 11:
-            animationY.tweenFunction = TweenAnimation.expoEaseOut
-            label.text = "expoEaseOut"
-        case 12:
-            animationY.tweenFunction = TweenAnimation.expoEaseInOut
-            label.text = "expoEaseInOut"
-        case 13:
-            animationY.tweenFunction = TweenAnimation.bounceEaseIn
-            label.text = "bounceEaseIn"
-        case 14:
-            animationY.tweenFunction = TweenAnimation.bounceEaseOut
-            label.text = "bounceEaseOut"
-        case 15:
             animationY.tweenFunction = TweenAnimation.sinEase(period: 2.0)
             label.text = "sinEase"
-        case 16:
+        case 2:
             animationY.tweenFunction = TweenAnimation.sinEaseIn
             label.text = "sinEaseIn"
-        case 17:
+        case 3:
             animationY.tweenFunction = TweenAnimation.sinEaseOut
             label.text = "sinEaseOut"
-        case 18:
+        case 4:
             animationY.tweenFunction = TweenAnimation.sinEaseInOut
             label.text = "sinEaseInOut"
+        case 5:
+            animationY.tweenFunction = TweenAnimation.power2EaseIn
+            label.text = "power2EaseIn"
+        case 6:
+            animationY.tweenFunction = TweenAnimation.power2EaseOut
+            label.text = "power2EaseOut"
+        case 7:
+            animationY.tweenFunction = TweenAnimation.power2EaseInOut
+            label.text = "power2EaseInOut"
+        case 8:
+            animationY.tweenFunction = TweenAnimation.power3EaseIn
+            label.text = "power3EaseIn"
+        case 9:
+            animationY.tweenFunction = TweenAnimation.power3EaseOut
+            label.text = "power3EaseOut"
+        case 10:
+            animationY.tweenFunction = TweenAnimation.power3EaseInOut
+            label.text = "power3EaseInOut"
+        case 11:
+            animationY.tweenFunction = TweenAnimation.power4EaseIn
+            label.text = "power4EaseIn"
+        case 12:
+            animationY.tweenFunction = TweenAnimation.power4EaseOut
+            label.text = "power4EaseOut"
+        case 13:
+            animationY.tweenFunction = TweenAnimation.power4EaseInOut
+            label.text = "power4EaseInOut"
+        case 14:
+            animationY.tweenFunction = TweenAnimation.power5EaseIn
+            label.text = "power5EaseIn"
+        case 15:
+            animationY.tweenFunction = TweenAnimation.power5EaseOut
+            label.text = "power5EaseOut"
+        case 16:
+            animationY.tweenFunction = TweenAnimation.power5EaseInOut
+            label.text = "power5EaseInOut"
+        case 17:
+            animationY.tweenFunction = TweenAnimation.expoEaseIn
+            label.text = "expoEaseIn"
+        case 18:
+            animationY.tweenFunction = TweenAnimation.expoEaseOut
+            label.text = "expoEaseOut"
+        case 19:
+            animationY.tweenFunction = TweenAnimation.expoEaseInOut
+            label.text = "expoEaseInOut"
+        case 20:
+            animationY.tweenFunction = TweenAnimation.circEaseIn
+            label.text = "circEaseIn"
+        case 21:
+            animationY.tweenFunction = TweenAnimation.circEaseOut
+            label.text = "circEaseOut"
+        case 22:
+            animationY.tweenFunction = TweenAnimation.circEaseInOut
+            label.text = "circEaseInOut"
+        case 23:
+            animationY.tweenFunction = TweenAnimation.bounceEaseIn
+            label.text = "bounceEaseIn"
+        case 24:
+            animationY.tweenFunction = TweenAnimation.bounceEaseOut
+            label.text = "bounceEaseOut"
+        case 25:
+            animationY.tweenFunction = TweenAnimation.bounceEaseInOut
+            label.text = "bounceEaseInOut"
+        case 26:
+            animationY.tweenFunction = TweenAnimation.backEaseIn
+            label.text = "backEaseIn"
+        case 27:
+            animationY.tweenFunction = TweenAnimation.backEaseOut
+            label.text = "backEaseOut"
+        case 28:
+            animationY.tweenFunction = TweenAnimation.backEaseInOut
+            label.text = "backEaseInOut"
+        case 29:
+            animationY.tweenFunction = TweenAnimation.elasticEaseIn
+            label.text = "elasticEaseIn"
+        case 30:
+            animationY.tweenFunction = TweenAnimation.elasticEaseOut
+            label.text = "elasticEaseOut"
+        case 31:
+            animationY.tweenFunction = TweenAnimation.elasticEaseInOut
+            label.text = "elasticEaseInOut"
         default:
             print("Missing tween function!")
             label.text = "Missing tween function! (\(animationIndex))"
