@@ -9,7 +9,33 @@
 import UIKit
 
 extension UIView {
-    public func animatePulse(forKey: String, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animateFade(forKey: String? = nil, from: Double, to: Double, duration: Double = 1.0, repeatCount: Double = 1.0) {
+        // first, set the final state (per https://oleb.net/blog/2012/11/prevent-caanimation-snap-back/)
+        if repeatCount == 1.0 {
+            layer.opacity = Float(to)
+        }
+        // ...then trigger the animation:
+        let fade: TweenAnimation = TweenAnimation(keyPath: "opacity")
+        fade.fromValue = TweenFloat(from)
+        fade.toValue = TweenFloat(to)
+        fade.duration = duration
+        fade.repeatCount = Float(repeatCount)
+        fade.autoreverses = (repeatCount > 1.0)
+        fade.tweenFunction = (repeatCount > 1.0) ? TweenAnimation.sinEaseInOut : TweenAnimation.linearEase
+        layer.add(fade, forKey: forKey)
+    }
+    
+    public func animateFadeIn(forKey: String? = nil, duration: Double = 1.0) {
+        animateFade(forKey: forKey, from: 0.0, to: 1.0, duration: duration)
+    }
+    
+    public func animateFadeOut(forKey: String? = nil, duration: Double = 1.0) {
+        // (be forewarned that the element will no longer be interactable once its opacity is 0.0;
+        // you'll have to make it reappear programmatically)
+        animateFade(forKey: forKey, from: 1.0, to: 0.0, duration: duration)
+    }
+    
+    public func animatePulse(forKey: String? = nil, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
         let pulse = TweenAnimation(keyPath: "transform.scale")
         pulse.fromValue = 1.0
         pulse.byValue = TweenFloat(strength)
@@ -19,7 +45,7 @@ extension UIView {
         layer.add(pulse, forKey: forKey)
     }
     
-    public func animatePulseUpward(forKey: String, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animatePulseUpward(forKey: String? = nil, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
         let scale = TweenAnimation(keyPath: "transform.scale")
         scale.fromValue = 1.0
         scale.byValue = TweenFloat(strength)
@@ -39,7 +65,7 @@ extension UIView {
         layer.add(pulse, forKey: forKey)
     }
     
-    public func animateSquashAndStretch(forKey: String, strength: Double = 0.1, duration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animateSquashAndStretch(forKey: String? = nil, strength: Double = 0.1, duration: Double = 1.0, repeatCount: Double = .infinity) {
         let horizontal = TweenAnimation(keyPath: "transform.scale.x")
         horizontal.fromValue = 1.0
         horizontal.byValue = TweenFloat(strength)
@@ -59,7 +85,7 @@ extension UIView {
         layer.add(group, forKey: forKey)
     }
     
-    public func animateHop(forKey: String, height: Double, pauseDuration: Double = 3.0, hopDuration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animateHop(forKey: String? = nil, height: Double, pauseDuration: Double = 3.0, hopDuration: Double = 1.0, repeatCount: Double = .infinity) {
         let rise = TweenAnimation(keyPath: "position.y")
         rise.fromValue = 0.0
         rise.byValue = TweenFloat(height)
@@ -83,7 +109,7 @@ extension UIView {
         layer.add(group, forKey: forKey)
     }
     
-    public func animateSquashHop(forKey: String, height: Double, pauseDuration: Double = 3.0, hopDuration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animateSquashHop(forKey: String? = nil, height: Double, pauseDuration: Double = 3.0, hopDuration: Double = 1.0, repeatCount: Double = .infinity) {
         let squashDirection = (height < 0.0) ? 1.0 : -1.0
         let squashDuration = hopDuration * 0.75
         let squashPercentage = 0.3
@@ -133,7 +159,7 @@ extension UIView {
         layer.add(group, forKey: forKey)
     }
     
-    public func animateBob(forKey: String, bob: Double, duration: Double = 1.0, repeatCount: Double = .infinity) {
+    public func animateBob(forKey: String? = nil, bob: Double, duration: Double = 1.0, repeatCount: Double = .infinity) {
         let vertical = TweenAnimation(keyPath: "position.y")
         vertical.fromValue = 0.0
         vertical.byValue = TweenFloat(bob)
@@ -144,7 +170,7 @@ extension UIView {
         layer.add(vertical, forKey: forKey)
     }
     
-    public func animateHonk(forKey: String, strength: Double = 1.0, rotation: Double = 0.1, duration: Double = 0.5, repeatCount: Double = 1.0) {
+    public func animateHonk(forKey: String? = nil, strength: Double = 1.0, rotation: Double = 0.1, duration: Double = 0.5, repeatCount: Double = 1.0) {
         let scale = TweenAnimation(keyPath: "transform.scale")
         scale.fromValue = 1.0
         scale.toValue = TweenFloat(1.0 + strength)

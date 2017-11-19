@@ -35,6 +35,30 @@ Note that while `CABasicAnimation` [doesn't actually require](https://developer.
 
 The demo project uses Xcode 9 and Swift 4, but the code will also work as-is with Swift 3; it doesn't use any Swift-4-specific syntax or language features.
 
+## Included Preset Tween Functions
+(These can all be visually demonstrated and compared by running the included test app.)
+- `.linearEase`
+- `.sinEase` / `.sineEaseIn` / `.sineEaseOut` / `.sineEaseInOut`
+- `.power2EaseIn` / `.power2EaseOut` / `.power2EaseInOut` (quadratic)
+- `.power3EaseIn` / `.power3EaseOut` / `.power3EaseInOut` (cubic)
+- `.power4EaseIn` / `.power4EaseOut` / `.power4EaseInOut` (quartic)
+- `.power5EaseIn` / `.power5EaseOut` / `.power5EaseInOut` (quintic)
+- `.expoEaseIn` / `.expoEaseOut` / `.expoEaseInOut` (exponential)
+- `.circEaseIn` / `.circEaseOut` / `.circEaseInOut` (circular)
+- `.bounceEaseIn` / `.bounceEaseOut` / `.bounceEaseInOut`
+- `.backEaseIn` / `.backEaseOut` / `.backEaseInOut`
+- `.elasticEaseIn` / `.elasticEaseOut` / `.elasticEaseInOut`
+
+## Included Sample UIView Animations
+(These can all be visually demonstrated and compared by running the included test app.)
+- `animateFade()` / `animateFadeIn()` / `animateFadeOut()`
+- `animatePulse()` / `animatePulseUpward()`
+- `animateSquashAndStretch()`
+- `animateHop()` / `animateSquashHop()`
+- `animateBob()`
+- `animateHonk()`
+
+
 ## See Also
 - [TFAnimation](https://github.com/luowenxing/TFAnimation/)
 - [GreenSock Ease Visualizer](https://greensock.com/ease-visualizer)
