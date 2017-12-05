@@ -15,7 +15,7 @@ extension UIView {
             layer.opacity = Float(to)
         }
         // ...then trigger the animation:
-        let fade: TweenAnimation = TweenAnimation(keyPath: "opacity")
+        let fade = TweenAnimation(keyPath: "opacity")
         fade.fromValue = TweenFloat(from)
         fade.toValue = TweenFloat(to)
         fade.duration = duration
@@ -33,6 +33,49 @@ extension UIView {
         // (be forewarned that the element will no longer be interactable once its opacity is 0.0;
         // you'll have to make it reappear programmatically)
         animateFade(forKey: forKey, from: 1.0, to: 0.0, duration: duration)
+    }
+    
+    // fadeDuration is the duration of a unidirectional fade
+    // visibleDuration is the duration the item should be fully visible (between fadeIn finishing and fadeOut starting)
+    // otherView is the view to alternately show with this one
+    public func animateAlternateFade(forKey: String? = nil, fadeDuration: Double, visibleDuration: Double, with otherView: UIView) {
+        let fadeIn = CABasicAnimation(keyPath: "opacity")
+        fadeIn.fromValue = TweenFloat(0.0)
+        fadeIn.toValue = TweenFloat(1.0)
+        fadeIn.duration = fadeDuration
+        fadeIn.beginTime = fadeDuration * 0.5
+        fadeIn.fillMode = kCAFillModeBackwards
+
+        let stayVisible = CABasicAnimation(keyPath: "opacity")
+        stayVisible.fromValue = TweenFloat(1.0)
+        stayVisible.toValue = TweenFloat(1.0)
+        stayVisible.duration = visibleDuration
+        stayVisible.beginTime = fadeIn.beginTime + fadeIn.duration
+        
+        let fadeOut = CABasicAnimation(keyPath: "opacity")
+        fadeOut.fromValue = TweenFloat(1.0)
+        fadeOut.toValue = TweenFloat(0.0)
+        fadeOut.duration = fadeDuration
+        fadeOut.beginTime = stayVisible.beginTime + stayVisible.duration
+        fadeOut.fillMode = kCAFillModeForwards
+
+        // used a fixed starting point so that the animations are properly in sync
+        let currentTime = CACurrentMediaTime()
+        
+        // start our fade cycle...
+        let fadeCycle = CAAnimationGroup()
+        fadeCycle.animations = [fadeIn, stayVisible, fadeOut]
+        fadeCycle.duration = 2.0 * (visibleDuration + 3.0 * fadeDuration)
+        fadeCycle.repeatCount = Float.infinity
+        fadeCycle.beginTime = currentTime
+        
+        layer.add(fadeCycle, forKey: forKey)
+
+        // ...and start an offset fade cycle on the other view
+        fadeCycle.beginTime = currentTime + visibleDuration + 3.0 * fadeDuration
+        fadeCycle.fillMode = kCAFillModeBoth
+
+        otherView.layer.add(fadeCycle, forKey: forKey)
     }
     
     public func animatePulse(forKey: String? = nil, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
