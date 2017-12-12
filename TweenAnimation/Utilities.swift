@@ -78,6 +78,32 @@ extension UIView {
         otherView.layer.add(fadeCycle, forKey: forKey)
     }
     
+    public func animateRotate(forKey: String? = nil, radians: Double = Double.pi * 2.0, duration: Double = 1.0, repeatCount: Double = .infinity) {
+        let rotate = TweenAnimation(keyPath: "transform.rotation.z")
+        rotate.fromValue = 0.0
+        rotate.byValue = TweenFloat(radians)
+        rotate.isCumulative = true
+        rotate.duration = duration
+        rotate.tweenFunction = TweenAnimation.linearEase
+        rotate.repeatCount = Float(repeatCount)
+        layer.add(rotate, forKey: forKey)
+    }
+
+    public func animateRotate(forKey: String? = nil, degrees: Double, duration: Double = 1.0, repeatCount: Double = .infinity) {
+        animateRotate(forKey: forKey, radians: degrees / 180.0 * Double.pi, duration: duration, repeatCount: repeatCount)
+    }
+
+    public func animateSpin(forKey: String? = nil, duration: Double = 1.0, repeatCount: Double = .infinity) {
+        let rotate = TweenAnimation(keyPath: "transform.rotation.z")
+        rotate.fromValue = 0.0
+        rotate.byValue = TweenFloat(Double.pi * 2.0)
+        rotate.isCumulative = true
+        rotate.duration = duration
+        rotate.tweenFunction = TweenAnimation.sinEaseInOut
+        rotate.repeatCount = Float(repeatCount)
+        layer.add(rotate, forKey: forKey)
+    }
+    
     public func animatePulse(forKey: String? = nil, strength: Double = 0.05, duration: Double = 1.0, repeatCount: Double = .infinity) {
         let pulse = TweenAnimation(keyPath: "transform.scale")
         pulse.fromValue = 1.0

@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         // demonstrate some different cycling animations on the "next" button as well
         let buttonAnimKey = "tweenButtonAnimation"
         nextButton2.setTitle("", for: .normal)
-        switch animationIndex % 15 {
+        switch animationIndex % 17 {
         case 0:
             let buttonAnimation = TweenAnimation(keyPath: "transform.scale")
             buttonAnimation.fromValue = 0.9
@@ -180,21 +180,25 @@ class ViewController: UIViewController {
             nextButton2.setTitle("Advance", for: .normal)
             nextButton.animateAlternateFade(forKey: buttonAnimKey, fadeDuration: 0.5, visibleDuration: 2.0, with: nextButton2)
         case 5:
-            nextButton.animatePulse(forKey: buttonAnimKey)
+            nextButton.animateRotate(forKey: buttonAnimKey)
         case 6:
-            nextButton.animatePulseUpward(forKey: buttonAnimKey)
+            nextButton.animateSpin(forKey: buttonAnimKey)
         case 7:
-            nextButton.animateSquashAndStretch(forKey: buttonAnimKey)
+            nextButton.animatePulse(forKey: buttonAnimKey)
         case 8:
-            nextButton.animateHop(forKey: buttonAnimKey, height: -20.0)
+            nextButton.animatePulseUpward(forKey: buttonAnimKey)
         case 9:
-            nextButton.animateSquashHop(forKey: buttonAnimKey, height: -20.0)
+            nextButton.animateSquashAndStretch(forKey: buttonAnimKey)
         case 10:
-            nextButton.animateBob(forKey: buttonAnimKey, bob: 2.0)
+            nextButton.animateHop(forKey: buttonAnimKey, height: -20.0)
         case 11:
+            nextButton.animateSquashHop(forKey: buttonAnimKey, height: -20.0)
+        case 12:
+            nextButton.animateBob(forKey: buttonAnimKey, bob: 2.0)
+        case 13:
             nextButton.animateHonk(forKey: buttonAnimKey)
         // some alternate tweens possible with stock CoreAnimation code...
-        case 12:
+        case 14:
             let basicanim = CABasicAnimation(keyPath: "transform.scale")
             basicanim.fromValue = 0.9
             basicanim.toValue = 1.1
@@ -203,7 +207,7 @@ class ViewController: UIViewController {
             basicanim.autoreverses = true
             basicanim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             nextButton.layer.add(basicanim, forKey: buttonAnimKey)
-        case 13:
+        case 15:
             let basicanim = CABasicAnimation(keyPath: "transform.scale")
             basicanim.fromValue = 0.9
             basicanim.toValue = 1.1
@@ -212,7 +216,7 @@ class ViewController: UIViewController {
             basicanim.autoreverses = true
             basicanim.timingFunction = CAMediaTimingFunction(controlPoints: 0.375, 0.0, 0.625, 1.0)  // sin approximation
             nextButton.layer.add(basicanim, forKey: buttonAnimKey)
-        case 14:
+        case 16:
             let springanim = CASpringAnimation(keyPath: "transform.scale")
             springanim.fromValue = 0.9
             springanim.toValue = 1.1
